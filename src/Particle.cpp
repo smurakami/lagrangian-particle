@@ -27,7 +27,7 @@ void Particle::update(){
   ofVec2f offset(rect.x,rect.y);
   ofVec2f scale(rect.width/_farneback->getFlow().cols, rect.height/_farneback->getFlow().rows);
   
-  ofVec2f index = (ofVec2f(_x, _y) - offset) / scale;
+  ofVec2f index = (ofVec2f(_x, _y) - offset) / scale;
   ofVec2f off = _farneback->getFlowOffset(index.x, index.y) * scale + offset;
   
   _vx = off.x;
