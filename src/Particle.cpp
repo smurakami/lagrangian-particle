@@ -28,6 +28,12 @@ void Particle::update(){
   ofVec2f scale(rect.width/_farneback->getFlow().cols, rect.height/_farneback->getFlow().rows);
   
   ofVec2f index = (ofVec2f(_x, _y) - offset) / scale;
+  // 画面外の場合に対処
+  if (index.x < 0 || index.x >= _farneback->getFlow().cols ||
+      index.y < 0 || index.y >= _farneback->getFlow().rows) {
+    return;
+  }
+  
   ofVec2f off = _farneback->getFlowOffset(index.x, index.y) * scale + offset;
   
   _vx = off.x;
